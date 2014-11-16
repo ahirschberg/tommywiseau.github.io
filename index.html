@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png"
+ href="icon/wiseau_favicon_32.png" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
@@ -143,18 +145,32 @@ div.info {
 }
 .attribute {
     float: right;
-    margin: 20px 10px 20px 20px;
+    margin: 20px 0px 20px 20px;
+    padding: 2px;
     color: rgb(89, 89, 89);
     font-size: large;
+    
+    z-index: -1;
+    
+    position: fixed;
+    right: 1px;
+    top: 1px;
+    
+    background-color: rgba(255, 255, 255, 0.84);
+}
+img.bigicon {
+    display: flex;
+    height: inherit;
 }
 </style>
 <title>How Not to Speak English</title>
 </head>
 <body>
+
 <div class="info">Please look at this site on a desktop!  If you view this on a phone, you won't get the full experience"</div>
 <div class="button" onclick="play_all()">Play all (warning-loud)</div>
 <div class="button" onclick="toggle_NSFW()">NSFW Videos are being <span id="nsfw_indicator">shown</span></div>
-<div class="attribute">By Alex Hirschberg</div>
+<div class="attribute">By Alex Hirschberg<br/><img class="big_icon" src="icon/wiseau_favicon_128.png"></div>
 <div class="content">
 
 <div class="button wiseau">
