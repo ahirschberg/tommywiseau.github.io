@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+var dispNSFW = true;
+
+$(document).ready(function() {
+    
+    var webm_support = supports_webm_video()
+    if (webm_support == "" || webm_support == "maybe")
+    {
+        var compat_keyword = "";
+        switch(webm_support) {
+        case "":
+            compat_keyword = "doesn't";
+            break;
+        case "maybe":
+            compat_keyword = "might not";
+            break;
+        }
+            
+        alert("Warning: your browser " + compat_keyword + " support WEBM video, and our alternative (MP4) takes A LOT more bandwidth.\n\nIf you are on a data plan or other metered connection, please consider upgrading your browser!"); 
+    }
+    
+    $("div.wiseau").click( function() {
+        $(this).find("video").get(0).play();
+    });
+});
+
+// From http://diveintohtml5.info/detect.html
+function supports_video() {
+  return !!document.createElement('video').canPlayType;
+}
+
+// From http://diveintohtml5.info/detect.html
+function supports_webm_video() {
+  if (!supports_video()) { return false; }
+  var v = document.createElement("video");
+  return v.canPlayType('video/webm; codecs="vp8, vorbis"');
+}
+
+function play_all() {
+    var numPlayed = 0;
+    $("video").each( function( index, value ) {
+        if ($(value).is(':visible')) { // ensure nsfw videos don't get played if they are hidden
+            setTimeout(function() {$(value).get(0).play()}, 500 * numPlayed);
+            numPlayed++;
+        }
+    });
+    $('html, body').animate({
+        scrollTop: ($(document).height() - $(window).height())
+    }, 10000); // How does this work so well???? I'm magic!
+}
+
+function toggle_NSFW() {
+    dispNSFW = !dispNSFW;
+    if (dispNSFW) {
+        $("#nsfw_indicator").text("shown");
+        $(".wiseau.nsfw").css("display", "inline-table"); 
+    }
+    else {
+        $("#nsfw_indicator").text("hidden");
+        $(".wiseau.nsfw").css("display", "none"); 
+    }
+}
+</script>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+video {
+    padding: 0;
+    margin: 0;
+    width: inherit;
+    border: 1px solid white;
+    border-radius: 2px;
+    /*height: 225px;*/
+}
+div.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1640px;
+    padding: 20px;
+}
+div.button {
+    margin: 5px;
+    padding: 5px;
+
+    /*border: 2px solid rgba(224, 224, 224, 0.77);*/
+    border-radius: 5px;
+   
+    text-align: center;
+    font-size: x-large;
+    
+    cursor: pointer;
+    
+    background: #C717CB;
+    color: white;
+    
+    display: inline-block;
+}
+div.wiseau {
+    margin: 20px; 
+    /*height: 225px;*/
+    width: 345px;
+    
+    display:inline-table;
+    padding:10px;
+    
+    background: #4C6C88;
+    color: white;
+    
+}
+
+#nsfw_indicator {
+    font-weight: 800;
+    font-size: x-large;
+}
+
+@media screen and (max-width: 1640px) {
+    div.content {
+        width: 818px;  /* so that you can have two divs side by side */
+
+    }
+}
+
+</style>
+<meta charset="utf-8">
+<title>How Not to Speak English</title>
+</head>
+<body>
+<div class="button" onclick="play_all()">Play all (warning-loud)</div>
+<div class="button" onclick="toggle_NSFW()">NSFW Videos are being <span id="nsfw_indicator">shown</span></div>
+
+<div class="content">
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/You_Betrayed_Me_You_Not_Good.webm" type="video/webm">
+  <source src="video/mp4/You_Betrayed_Me_You_Not_Good.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+You not good you
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Wake_Up_Jonny_Please.webm" type="video/webm">
+  <source src="video/mp4/Wake_Up_Jonny_Please.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+How to be delusional
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Tommys_Planet.webm" type="video/webm">
+  <source src="video/mp4/Tommys_Planet.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Tommy's Planet
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/They're_All_Outside_LOL.webm" type="video/webm">
+  <source src="video/mp4/They're_All_Outside_LOL.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+They're all outside LOL
+</div>
+
+<div class="button wiseau nsfw">
+<video >
+  <source src="video/webm/Oh_Hey_Mark.webm" type="video/webm">
+  <source src="video/mp4/Oh_Hey_Mark.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+I did not!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Tearing_Me_Apart.webm" type="video/webm">
+  <source src="video/mp4/Tearing_Me_Apart.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+You are tearing me apart, Lisa!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Comments_in_Pocket.webm" type="video/webm">
+  <source src="video/mp4/Comments_in_Pocket.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Leave your stupid comments in your pocket!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Stop_Ganging_Up_On_Me.webm" type="video/webm">
+  <source src="video/mp4/Stop_Ganging_Up_On_Me.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Stop ganging up on me!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Screw_the_Whole_World_unintelligible.webm" type="video/webm">
+  <source src="video/mp4/Screw_the_Whole_World_unintelligible.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+*unintelligible*
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Psycologist_Plays_Psycologist.webm" type="video/webm">
+  <source src="video/mp4/Psycologist_Plays_Psycologist.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Why do you always do your job?
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Psycologist_Disappears.webm" type="video/webm">
+  <source src="video/mp4/Psycologist_Disappears.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+"I'm done [acting in this movie]"
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Make_Out_with_Michelle.webm" type="video/webm">
+  <source src="video/mp4/Make_Out_with_Michelle.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Awkward Clapping
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/I_Fed_Up_with_this_WORLD.webm" type="video/webm">
+  <source src="video/mp4/I_Fed_Up_with_this_WORLD.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+I fed up with this wORLd
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/How_is_Your_Sex_Life.webm" type="video/webm">
+  <source src="video/mp4/How_is_Your_Sex_Life.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+How is your sex life?
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/How_Dare_You_Talk_to_Me_Like_That.webm" type="video/webm">
+  <source src="video/mp4/How_Dare_You_Talk_to_Me_Like_That.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+You should tell me everything!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Good_Thinking.webm" type="video/webm">
+  <source src="video/mp4/Good_Thinking.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Good thinking!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Gimme_Five.webm" type="video/webm">
+  <source src="video/mp4/Gimme_Five.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Just gimme five!
+</div>
+
+<div class="button wiseau nsfw">
+<video >
+  <source src="video/webm/Get_Out.webm" type="video/webm">
+  <source src="video/mp4/Get_Out.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+Don't touch me!
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Denny_Likes_to_Watch.webm" type="video/webm">
+  <source src="video/mp4/Denny_Likes_to_Watch.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+I just like to watch you guys
+</div>
+
+<div class="button wiseau">
+<video >
+  <source src="video/webm/Crazy_Bundles.webm" type="video/webm">
+  <source src="video/mp4/Crazy_Bundles.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+We're Crazy!
+</div>
+</div>
+</body>
