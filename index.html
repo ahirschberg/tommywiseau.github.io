@@ -68,6 +68,10 @@ function toggle_NSFW() {
         $(".wiseau.nsfw").css("display", "none"); 
     }
 }
+var laughs = [ "laughs/laugh1.mp3", "laughs/laugh2.mp3", "laughs/laugh3.mp3", "laughs/laugh4.mp3", "laughs/laugh5.mp3", "laughs/laugh6.mp3", "laughs/laugh7.mp3" ];
+function wis_laugh() {
+    new Audio(laughs[Math.floor(Math.random()*laughs.length)]).play();
+}
 </script>
 <style>
 body {
@@ -150,7 +154,7 @@ div.info {
     color: rgb(89, 89, 89);
     font-size: large;
     
-    z-index: -1;
+    z-index: 1;
     
     position: fixed;
     right: 1px;
@@ -158,9 +162,11 @@ div.info {
     
     background-color: rgba(255, 255, 255, 0.84);
 }
-img.bigicon {
+img.big_icon {
     display: flex;
     height: inherit;
+    
+    cursor: pointer;
 }
 </style>
 <title>How Not to Speak English</title>
@@ -170,7 +176,7 @@ img.bigicon {
 <div class="info">Please look at this site on a desktop!  If you view this on a phone, you won't get the full experience"</div>
 <div class="button" onclick="play_all()">Play all (warning-loud)</div>
 <div class="button" onclick="toggle_NSFW()">NSFW Videos are being <span id="nsfw_indicator">shown</span></div>
-<div class="attribute">By Alex Hirschberg<br/><img class="big_icon" src="icon/wiseau_favicon_128.png" alt="awkward laughter"></div>
+<div class="attribute">By Alex Hirschberg<br/><img class="big_icon" src="icon/wiseau_favicon_128.png" onclick="wis_laugh()" alt="awkward laughter"></div>
 <div class="content">
 
 <div class="button wiseau">
