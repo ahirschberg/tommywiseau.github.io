@@ -28,8 +28,44 @@ $(document).ready(function() {
     }
     
     $("div.wiseau").click( function() {
-        $(this).find("video").get(0).play();
+        var video = $(this).find("video").get(0);
+        if ($(this).is(".looping"))
+        {
+            $(this).removeClass("looping");
+            video.loop = false;
+            video.pause();
+
+        } else 
+            video.play();
     });
+    
+    // Right click looping
+    $(document).on('contextmenu', function(e) {
+        if ($(e.target).is("div.wiseau") || $(e.target).parent().is("div.wiseau"))
+        {
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+    $("div.wiseau").mousedown(function(e){ 
+        if( e.button == 2 ) { 
+            var video = $(this).find("video").get(0);
+            if ($(this).is(".looping"))
+            {
+                $(this).removeClass("looping");
+                video.loop = false;
+            } else {
+                $(this).addClass("looping");
+                video.loop = true;
+                video.load();
+                video.play();
+            }
+            return false; 
+        } 
+        return true; 
+    }); 
 });
 
 // From http://diveintohtml5.info/detect.html
@@ -120,6 +156,11 @@ div.wiseau {
     background: #4C6C88;
     color: white;
     
+}
+
+div.looping {
+    background-color: #29314A;
+    box-shadow: 0px 0px 0px 2px red;
 }
 
 div.info {
