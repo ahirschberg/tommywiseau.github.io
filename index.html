@@ -145,6 +145,11 @@ div.button {
     
     display: inline-block;
 }
+
+div.wiseau:hover {
+    box-shadow: 0px 0px 30px 2px rgb(27, 153, 190);
+}
+
 div.wiseau {
     margin: 20px; 
     /*height: 225px;*/
@@ -158,12 +163,16 @@ div.wiseau {
     
 }
 
-div.looping {
-    background-color: #29314A;
-    box-shadow: 0px 0px 0px 2px red;
+div.header_clickable:hover {
+    box-shadow: 0px 0px 10px 0px rgb(208, 30, 57);
 }
 
-div.info {
+div.looping {
+    background-color: #29314A;
+    box-shadow: 0px 0px 0px 2px red !important;
+}
+
+div.desktop_warning {
     font-size: xx-large;
     background-color: rgb(244, 183, 25);
     border-bottom: 1px solid black;
@@ -179,12 +188,12 @@ div.info {
 
 @media screen and (max-width: 1640px) {
     div.content {
-        width: 818px;  /* so that you can have two divs side by side */
+        width: 820px;  /* so that you can have two divs side by side */
 
     }
 }
 @media (max-width: 1080px) {
-    div.info {
+    div.desktop_warning {
         display: block;
     }
 }
@@ -209,14 +218,26 @@ img.big_icon {
     
     cursor: pointer;
 }
+img.big_icon:hover {
+    box-shadow: 0px 0px 30px 2px rgb(27, 153, 190);
+}
+
+span.info {
+    font-size: x-large;
+    color: white;
+    padding: 5px 10px;
+    background-color: rgb(252, 96, 0);
+    border-radius: 2px;
+}
 </style>
 <title>How Not to Speak English</title>
 </head>
 <body>
 
-<div class="info">Please look at this site on a desktop!  If you view this on a phone, you won't get the full experience"</div>
-<div class="button" onclick="play_all()">Play all (warning-loud)</div>
-<div class="button" onclick="toggle_NSFW()">NSFW Videos are being <span id="nsfw_indicator">shown</span></div>
+<div class="desktop_warning">Please look at this site on a desktop!  If you view this on a phone, you won't get the full experience"</div>
+<div class="button header_clickable" onclick="play_all()">Play all (warning-loud)</div>
+<div class="button header_clickable" onclick="toggle_NSFW()">NSFW Videos are being <span id="nsfw_indicator">shown</span></div>
+<span class="info">Left click to play, right click to loop</span>
 <div class="attribute">By Alex Hirschberg<br/><img class="big_icon" src="icon/wiseau_favicon_128.png" onclick="wis_laugh()" alt="awkward laughter"></div>
 <div class="content">
 
